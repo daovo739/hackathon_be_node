@@ -8,28 +8,16 @@ const {
 } = require('../controllers/education')
 
 const { mintNFT } = require('../controllers/nft')
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'store/images/educations')
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
-    const fileName =
-      file.fieldname +
-      '-' +
-      uniqueSuffix +
-      '.' +
-      file.originalname.split('.')[1]
-    cb(null, fileName)
-  },
-})
+const { uploadImage } = require('../controllers/request')
 
-const upload = multer({ storage: storage })
-
+const multerStorage = multer.memoryStorage()
+const upload = multer({ storage: multerStorage })
 router
   .route('/education')
   .get(getAllEducations)
   .post(upload.single('image'), createEducation)
 
-router.route('/mint').post(mintNFT)
+// router.route('/request').get(getAllRequests).post(createRequest)
+router.route('/upload').post(uploadImage)
+
 module.exports = router

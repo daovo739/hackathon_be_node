@@ -16,7 +16,7 @@ const EducationSchema = new mongoose.Schema({
     required: [true, 'Address is required'],
     trim: true,
   },
-  img: {
+  image: {
     data: Buffer,
     contentType: String,
   },
