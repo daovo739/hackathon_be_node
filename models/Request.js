@@ -7,7 +7,7 @@ const RequestSchema = new mongoose.Schema({
     required: [true, 'Name is required'],
   },
   dob: {
-    type: Date,
+    type: String,
     required: [true, 'Date of birth is required'],
   },
   education: {
@@ -21,6 +21,10 @@ const RequestSchema = new mongoose.Schema({
   certificate: {
     type: String,
     required: [true, 'Certificate is required'],
+  },
+  image: {
+    data: Buffer,
+    contentType: String,
   },
 })
 

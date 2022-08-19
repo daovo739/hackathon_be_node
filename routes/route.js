@@ -8,7 +8,7 @@ const {
 } = require('../controllers/education')
 
 const { mintNFT } = require('../controllers/nft')
-const { uploadImage } = require('../controllers/request')
+const { createRequest, getAllRequest } = require('../controllers/request')
 
 const multerStorage = multer.memoryStorage()
 const upload = multer({ storage: multerStorage })
@@ -17,7 +17,9 @@ router
   .get(getAllEducations)
   .post(upload.single('image'), createEducation)
 
-// router.route('/request').get(getAllRequests).post(createRequest)
-router.route('/upload').post(uploadImage)
+router
+  .route('/request')
+  .get(getAllRequest)
+  .post(upload.single('image'), createRequest)
 
 module.exports = router

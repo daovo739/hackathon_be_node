@@ -5,8 +5,14 @@ const path = require('path')
 
 const getAllEducations = asyncWrapper(async (req, res) => {
   // await Education.deleteMany({})
-  const educations = await Education.find({})
-  res.status(201).json({ educations })
+  const { isKYCVerified } = req.query
+  const queryObject = {}
+
+  if (isKYCVerified) {
+    queryObject.isKYCVerified = isKYCVerified === 'true' ? true : false
+  }
+  const education = await Education.find(queryObject)
+  res.status(201).json({ education })
 })
 
 const createEducation = asyncWrapper(async (req, res) => {
