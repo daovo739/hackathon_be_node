@@ -2,6 +2,12 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 
+const {
+  getAllEducations,
+  createEducation,
+} = require('../controllers/education')
+
+const { mintNFT } = require('../controllers/nft')
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'store/images/educations')
@@ -20,14 +26,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-const {
-  getAllEducations,
-  createEducation,
-} = require('../controllers/education')
-
 router
-  .route('/')
+  .route('/education')
   .get(getAllEducations)
   .post(upload.single('image'), createEducation)
 
+router.route('/mint').post(mintNFT)
 module.exports = router

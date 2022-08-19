@@ -5,7 +5,7 @@ const connectDB = require('./db/connect')
 const notFound = require('./middleware/notFound')
 var cors = require('cors')
 const errorHandlerMiddleware = require('./middleware/error-handle')
-const educationRoute = require('./routes/education')
+const router = require('./routes/route')
 
 // middleware
 app.use(cors())
@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // routes
-app.use('/api/v1/education-kyc', educationRoute)
+app.use('/api/v1', router)
 
 // errors
 app.use(notFound)

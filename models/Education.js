@@ -9,10 +9,12 @@ const EducationSchema = new mongoose.Schema({
   legalRepresentative: {
     type: String,
     required: [true, 'Legal representative  is required'],
+    trim: true,
   },
   address: {
     type: String,
     required: [true, 'Address is required'],
+    trim: true,
   },
   img: {
     data: Buffer,
@@ -21,6 +23,7 @@ const EducationSchema = new mongoose.Schema({
   principal: {
     type: String,
     required: [true, 'Principal is required'],
+    trim: true,
   },
   isKYCVerified: {
     type: Boolean,
