@@ -27,4 +27,13 @@ const createEducation = asyncWrapper(async (req, res) => {
   res.status(201).json({ educationCreated })
 })
 
-module.exports = { getAllEducations, createEducation }
+const deleteEducation = asyncWrapper(async (req, res) => {
+  const { id } = req.params
+  const education = await Education.findOneAndDelete({ _id: id })
+  if (!education) {
+    return next(createCustomError(`No education with id : ${idD}`, 404))
+  }
+  res.status(200).json({ msg: 'education deleted' })
+})
+
+module.exports = { getAllEducations, createEducation, deleteEducation }
