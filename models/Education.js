@@ -30,6 +30,11 @@ const EducationSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    status: {
+      type: String,
+      default: 'pending',
+      enum: ['pending', 'approved', 'rejected'],
+    },
   },
   { timestamps: true }
 )

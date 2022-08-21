@@ -28,7 +28,7 @@ router.route('/education/:id').delete(deleteEducation)
 router
   .route('/request')
   .get(getAllRequest)
-  .post(upload.single('image'), createRequest)
+  .post(upload.array('image', 10), createRequest)
 
 router.route('/request/:id').delete(deleteRequest)
 module.exports = router

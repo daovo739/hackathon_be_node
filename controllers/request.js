@@ -2,6 +2,7 @@ const Request = require('../models/Request')
 const asyncWrapper = require('../middleware/async')
 const fs = require('fs')
 const path = require('path')
+const { log } = require('console')
 
 const getAllRequest = asyncWrapper(async (req, res) => {
   // await Request.deleteMany({})
@@ -12,9 +13,13 @@ const getAllRequest = asyncWrapper(async (req, res) => {
 const createRequest = asyncWrapper(async (req, res) => {
   const request = {
     ...req.body,
-    image: {
-      data: new Buffer.from(req.file.buffer, 'base64'),
-      contentType: req.file.mimetype,
+    imageNFT: {
+      data: new Buffer.from(req.files[0].buffer, 'base64'),
+      contentType: req.files[0].mimetype,
+    },
+    imageKYC: {
+      data: new Buffer.from(req.files[1].buffer, 'base64'),
+      contentType: req.files[1].mimetype,
     },
   }
   const requestCreated = await Request.create(request)

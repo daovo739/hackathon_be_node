@@ -11,10 +11,6 @@ const NFTSchema = new mongoose.Schema({
     required: [true, 'Center is required'],
     trim: true,
   },
-  nationalID: {
-    type: String,
-    trim: true,
-  },
   studentID: {
     type: String,
     trim: true,

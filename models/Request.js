@@ -8,7 +8,7 @@ const RequestSchema = new mongoose.Schema(
       required: [true, 'Name is required'],
     },
     dob: {
-      type: Date,
+      type: String,
       required: [true, 'Date of birth is required'],
     },
     education: {
@@ -23,9 +23,26 @@ const RequestSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Certificate is required'],
     },
-    image: {
+    imageNFT: {
       data: Buffer,
       contentType: String,
+    },
+    imageKYC: {
+      data: Buffer,
+      contentType: String,
+    },
+    nationID: {
+      type: String,
+      required: [true, 'National ID is required'],
+    },
+    principal: {
+      type: String,
+      required: [true, 'Principal is required'],
+    },
+    status: {
+      type: String,
+      default: 'pending',
+      enum: ['pending', 'approved', 'rejected'],
     },
   },
   { timestamps: true }
