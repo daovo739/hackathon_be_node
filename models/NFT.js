@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose
 
 const NFTSchema = new mongoose.Schema(
   {
@@ -12,10 +13,9 @@ const NFTSchema = new mongoose.Schema(
       required: [true, 'Name is required'],
       trim: true,
     },
-    center: {
-      type: String,
-      required: [true, 'Center is required'],
-      trim: true,
+    education: {
+      type: Schema.Types.ObjectId,
+      ref: 'Education',
     },
     studentID: {
       type: String,
