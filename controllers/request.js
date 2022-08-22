@@ -35,4 +35,19 @@ const deleteRequest = asyncWrapper(async (req, res) => {
   res.status(200).json({ msg: 'request deleted' })
 })
 
-module.exports = { createRequest, getAllRequest, deleteRequest }
+const updateRequest = asyncWrapper(async (req, res, next) => {
+  const { id } = req.params
+
+  const request = await Request.findOneAndUpdate({ _id: id }, req.body, {
+    new: true,
+    runValidators: true,
+  })
+
+  if (!request) {
+    return next(createCustomError(`No request with id : ${id}`, 404))
+  }
+
+  res.status(200).json({ request })
+})
+
+module.exports = { createRequest, getAllRequest, deleteRequest, updateRequest }

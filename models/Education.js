@@ -26,13 +26,8 @@ const EducationSchema = new mongoose.Schema(
       required: [true, 'Principal is required'],
       trim: true,
     },
-    isKYCVerified: {
-      type: Boolean,
-      default: false,
-    },
     status: {
       type: String,
-      default: 'pending',
       enum: ['pending', 'approved', 'rejected'],
     },
   },
