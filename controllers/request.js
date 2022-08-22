@@ -6,7 +6,14 @@ const { log } = require('console')
 
 const getAllRequest = asyncWrapper(async (req, res) => {
   // await Request.deleteMany({})
-  const request = await Request.find({}).populate('education', 'name').exec()
+  const { status } = req.query
+  const queryObject = {}
+  if (status) {
+    queryObject.status = status
+  }
+  const request = await Request.find(queryObject)
+    .populate('education', 'name')
+    .exec()
   res.status(201).json({ request })
 })
 

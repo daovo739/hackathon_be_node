@@ -4,12 +4,8 @@ const { createCustomError } = require('../errors/custom-error')
 
 const getAllEducations = asyncWrapper(async (req, res) => {
   // await Education.deleteMany({})
-  const { isKYCVerified, status } = req.query
+  const { status } = req.query
   const queryObject = {}
-
-  if (isKYCVerified) {
-    queryObject.isKYCVerified = isKYCVerified === 'true' ? true : false
-  }
   if (status) {
     queryObject.status = status
   }
