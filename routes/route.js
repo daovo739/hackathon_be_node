@@ -9,7 +9,7 @@ const {
   updateEducation,
 } = require('../controllers/education')
 
-const { mintNFT } = require('../controllers/nft')
+const { mintNFT, getAllNFT } = require('../controllers/nft')
 const {
   createRequest,
   getAllRequest,
@@ -33,4 +33,7 @@ router
   .post(upload.array('image', 10), createRequest)
 
 router.route('/request/:id').delete(deleteRequest).patch(updateRequest)
+
+router.route('/nft').get(getAllNFT).post(mintNFT)
+
 module.exports = router

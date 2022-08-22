@@ -1,8 +1,5 @@
 const Request = require('../models/Request')
 const asyncWrapper = require('../middleware/async')
-const fs = require('fs')
-const path = require('path')
-const { log } = require('console')
 
 const getAllRequest = asyncWrapper(async (req, res) => {
   // await Request.deleteMany({})
