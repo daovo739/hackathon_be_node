@@ -4,10 +4,13 @@ const { createCustomError } = require('../errors/custom-error')
 
 const getAllEducations = asyncWrapper(async (req, res) => {
   // await Education.deleteMany({})
-  const { status } = req.query
+  const { status, principal } = req.query
   const queryObject = {}
   if (status) {
     queryObject.status = status
+  }
+  if (principal) {
+    queryObject.principal = principal
   }
 
   const education = await Education.find(queryObject)

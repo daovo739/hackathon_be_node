@@ -1,13 +1,19 @@
 const Request = require('../models/Request')
 const asyncWrapper = require('../middleware/async')
+const mongoose = require('mongoose')
 
 const getAllRequest = asyncWrapper(async (req, res) => {
   // await Request.deleteMany({})
-  const { status } = req.query
+  const { status, educationId } = req.query
   const queryObject = {}
   if (status) {
     queryObject.status = status
   }
+
+  if (educationId) {
+    queryObject.education = mongoose.Types.ObjectId(educationId)
+  }
+
   const request = await Request.find(queryObject)
     .populate('education', 'name')
     .exec()
