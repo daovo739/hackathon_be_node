@@ -2,6 +2,7 @@ const NFT = require('../models/NFT')
 const asyncWrapper = require('../middleware/async')
 
 const getAllNFT = asyncWrapper(async (req, res) => {
+  // await NFT.deleteMany({})
   const nft = await NFT.find({})
   res.status(201).json({ nft })
 })

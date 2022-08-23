@@ -6,7 +6,6 @@ const NFTSchema = new mongoose.Schema(
     tokenID: {
       type: Number,
       unique: true,
-      default: 0,
     },
     name: {
       type: String,
@@ -41,24 +40,24 @@ const NFTSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-const CounterSchema = new mongoose.Schema({
-  _id: { type: String, required: true },
-  seq: { type: Number, default: 0 },
-})
+// const CounterSchema = new mongoose.Schema({
+//   _id: { type: String, required: true },
+//   seq: { type: Number, default: 0 },
+// })
 
-const counter = mongoose.model('counter', CounterSchema)
+// const counter = mongoose.model('counter', CounterSchema)
 
-NFTSchema.pre('save', function (next) {
-  const doc = this
-  counter.findByIdAndUpdate(
-    { _id: 'entityId' },
-    { $inc: { seq: 1 } },
-    function (error, counter) {
-      if (error) return next(error)
-      doc.tokenID = counter.seq
-      next()
-    }
-  )
-})
+// NFTSchema.pre('save', function (next) {
+//   const doc = this
+//   counter.findByIdAndUpdate(
+//     { _id: 'entityId' },
+//     { $inc: { seq: 1 } },
+//     function (error, counter) {
+//       if (error) return next(error)
+//       doc.tokenID = counter.seq
+//       next()
+//     }
+//   )
+// })
 
 module.exports = mongoose.model('NFT', NFTSchema)
