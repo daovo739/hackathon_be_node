@@ -8,7 +8,7 @@ const RequestSchema = new mongoose.Schema(
       required: [true, 'Name is required'],
     },
     dob: {
-      type: String,
+      type: Date,
       required: [true, 'Date of birth is required'],
     },
     education: {
