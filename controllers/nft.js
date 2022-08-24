@@ -8,7 +8,7 @@ const getAllNFT = asyncWrapper(async (req, res) => {
   if (id) {
     queryObject.tokenID = id
   }
-  const nft = await NFT.find(queryObject)
+  const nft = await NFT.find(queryObject).populate('education', 'name').exec()
   res.status(200).json({ nft })
 })
 
