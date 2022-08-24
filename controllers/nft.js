@@ -9,7 +9,7 @@ const getAllNFT = asyncWrapper(async (req, res) => {
     queryObject.tokenID = id
   }
   const nft = await NFT.find(queryObject)
-  res.status(201).json({ nft })
+  res.status(200).json({ nft })
 })
 
 const mintNFT = asyncWrapper(async (req, res) => {

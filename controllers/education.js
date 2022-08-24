@@ -14,7 +14,7 @@ const getAllEducations = asyncWrapper(async (req, res) => {
   }
 
   const education = await Education.find(queryObject)
-  res.status(201).json({ education })
+  res.status(200).json({ education })
 })
 
 const createEducation = asyncWrapper(async (req, res) => {

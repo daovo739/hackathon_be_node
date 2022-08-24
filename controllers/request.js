@@ -20,7 +20,7 @@ const getAllRequest = asyncWrapper(async (req, res) => {
   const request = await Request.find(queryObject)
     .populate('education', 'name')
     .exec()
-  res.status(201).json({ request })
+  res.status(200).json({ request })
 })
 
 const createRequest = asyncWrapper(async (req, res) => {
