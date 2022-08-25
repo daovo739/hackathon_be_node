@@ -36,6 +36,10 @@ const NFTSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Nation ID is required'],
     },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
   },
   { timestamps: true }
 )

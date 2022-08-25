@@ -34,6 +34,6 @@ router
 
 router.route('/request/:id').delete(deleteRequest).patch(updateRequest)
 
-router.route('/nft').get(getAllNFT).post(mintNFT)
+router.route('/nft').get(getAllNFT).post(upload.single('image'), mintNFT)
 
 module.exports = router
