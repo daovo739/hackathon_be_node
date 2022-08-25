@@ -20,9 +20,13 @@ const getAllEducations = asyncWrapper(async (req, res) => {
 const createEducation = asyncWrapper(async (req, res) => {
   const education = {
     ...req.body,
-    image: {
-      data: new Buffer.from(req.file.buffer, 'base64'),
-      contentType: req.file.mimetype,
+    imageKYC: {
+      data: new Buffer.from(req.files[0].buffer, 'base64'),
+      contentType: req.files[0].mimetype,
+    },
+    imageLogo: {
+      data: new Buffer.from(req.files[1].buffer, 'base64'),
+      contentType: req.files[1].mimetype,
     },
   }
   const educationCreated = await Education.create(education)

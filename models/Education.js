@@ -17,7 +17,11 @@ const EducationSchema = new mongoose.Schema(
       required: [true, 'Address is required'],
       trim: true,
     },
-    image: {
+    imageKYC: {
+      data: Buffer,
+      contentType: String,
+    },
+    imageLogo: {
       data: Buffer,
       contentType: String,
     },

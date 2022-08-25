@@ -23,7 +23,7 @@ const upload = multer({ storage: multerStorage })
 router
   .route('/education')
   .get(getAllEducations)
-  .post(upload.single('image'), createEducation)
+  .post(upload.array('image', 10), createEducation)
 
 router.route('/education/:id').delete(deleteEducation).patch(updateEducation)
 
