@@ -18,6 +18,7 @@ const getAllEducations = asyncWrapper(async (req, res) => {
 })
 
 const createEducation = asyncWrapper(async (req, res) => {
+  console.log(req.files)
   const education = {
     ...req.body,
     imageKYC: {
