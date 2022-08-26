@@ -22,7 +22,6 @@ const NFTSchema = new mongoose.Schema(
     },
     dob: {
       type: Date,
-      trim: true,
     },
     cer_owner: {
       type: String,

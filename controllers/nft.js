@@ -15,10 +15,12 @@ const getAllNFT = asyncWrapper(async (req, res) => {
 const mintNFT = asyncWrapper(async (req, res) => {
   const nft = {
     ...req.body,
+    education: req.body.education._id,
     image: {
-      data: new Buffer.from(req.file.buffer, 'base64'),
+      data: req.file.buffer,
       contentType: req.file.mimetype,
     },
+    // image: { data: req.file.buffer, contentType: req.file.mimetype },
   }
   const nftCreated = await NFT.create(nft)
   res.status(201).json({ nftCreated })
