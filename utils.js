@@ -22,6 +22,6 @@ const deleteRequest = async () => {
   console.log('deleted all Request')
 }
 
-module.exports = { deleteEdu, deleteNFT, deleteRequest }
-
-// node -e 'require("./utils").deleteNFT()
+// deleteRequest()
+deleteNFT()
+// deleteEdu()
