@@ -17,6 +17,7 @@ const getAllRequest = asyncWrapper(async (req, res) => {
   if (principal) {
     queryObject.principal = principal
   }
+  console.log(queryObject)
   const request = await Request.find(queryObject)
     .populate('education', 'name')
     .exec()

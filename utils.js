@@ -22,6 +22,6 @@ const deleteRequest = async () => {
   console.log('deleted all Request')
 }
 
-// deleteRequest()
+deleteRequest()
 deleteNFT()
-// deleteEdu()
+deleteEdu()
